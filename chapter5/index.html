@@ -15,7 +15,7 @@
 	<!-- For Favicons -->
     <link rel="icon" type="x-icon" href="favicon.png">
 	<!-- For Page Title -->
-    <title>Deltarune Chapter 5</title>
+    <title>Deltarune Chapter 4</title>
     <style>
       @-webkit-keyframes rotation {
         from {
@@ -412,7 +412,7 @@
   }
 
   Promise.all([
-    mergeFiles(getParts("game.unx", 1, 10)),
+    mergeFiles(getParts("game.unx", 1, 8)),
     mergeFiles(getParts("runner.data", 1, 2))
 ]).then(([gameunx, runnerdata]) => {
   window.gameUnxUrl = gameunx;
