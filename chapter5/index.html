@@ -411,7 +411,18 @@
       }
       return parts;
   }
+window.onerror = function (message, source, line, column, error) {
+  const detail = error?.stack || `${message} at ${source}:${line}:${column}`;
+  document.getElementById("status").textContent = `Error: ${detail}`;
+  document.getElementById("spinner").style.display = "none";
+  return true;
+};
 
+window.onunhandledrejection = function (event) {
+  const reason = event.reason?.stack || event.reason || event;
+  document.getElementById("status").textContent = `Promise error: ${reason}`;
+  document.getElementById("spinner").style.display = "none";
+};
   Promise.all([
     mergeFiles(getParts("game.unx", 1, 10)),
     mergeFiles(getParts("runner.data", 1, 2))
