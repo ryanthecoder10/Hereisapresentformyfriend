@@ -1,4 +1,4 @@
-	// Background Color Changer Function
+f	// Background Color Changer Function
 	function changecolor(el) {
 		document.body.style.backgroundColor = el.value;
 	}
@@ -155,7 +155,12 @@
         },
       };
       Module.setStatus("Downloading...");
-      window.onerror = function (event) {
+      window.onerror = function (event) {window.onerror = function (message, source, line, column, error) {
+  const detail = error?.stack || `${message} at ${source}:${line}:${column}`;
+  statusElement.textContent = `Error: ${detail}`;
+  spinnerElement.style.display = "none";
+  return true;
+};
         // TODO: do not warn on ok events like simulating an infinite loop or exitStatus
         Module.setStatus("Exception thrown, see JavaScript console");
         spinnerElement.style.display = "none";
